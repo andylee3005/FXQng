@@ -1,0 +1,34 @@
+<body style="background-color:rgb(243, 240, 250);">
+    
+    <mat-form-field appearance="fill">
+        <mat-label>Select a symbol</mat-label>
+        <mat-select [(value)]="selectedSymbol" (selectionChange)="selectChangeHandler($event)">
+            <mat-option value="USDCAD">USDCAD</mat-option>
+            <mat-option value="CADJPY">CADJPY</mat-option>
+            <mat-option value="EURUSD">EURUSD</mat-option>
+            <mat-option value="USDJPY">USDJPY</mat-option>
+        </mat-select>
+    </mat-form-field>
+    
+
+    <div style="padding: 13px;">
+        <b> Showing {{quotes.length}} new quotes</b>
+        <mat-spinner [diameter]="200" *ngIf="quotes.length === 0"></mat-spinner>
+        <div fxLayout="row wrap" fxLayoutGap="16px grid">
+            <div fxFlex="12.5%" *ngFor="let quote of quotes">
+                <mat-card style="margin-top:10px;">
+                    <mat-card-header>
+                        <mat-card-title>{{quote.symbol}}</mat-card-title>
+                        <mat-card-subtitle>Tenor: {{quote.tenor}}<br>{{quote.fxSpot.quoteTime}}
+                        </mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p style="font-size:140%; text-align:center; margin-top: -0.5em;">
+                            ${{quote.price}}
+                        </p>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</body>
