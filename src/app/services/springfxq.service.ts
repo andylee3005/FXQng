@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SpringfxqService {
-  private  fxqUrl = 'http://192.168.0.25:4983/FXQ';
+  private  fxqUrl = 'http://192.168.0.22:4983/FXQ';
   constructor(private http: HttpClient) {  }
 
   getAll(): Observable<any> {
@@ -19,11 +19,26 @@ export class SpringfxqService {
   }
 
   findBySymbol(symbol: string): Observable<any> {
-    return this.http.get( `${this.fxqUrl}/ssymbol/${symbol}`);
+    return this.http.get( `${this.fxqUrl}/symbol/${symbol}`);
   }
 
   findBySymbolTenor(symbol: string, tenor: string): Observable<any> {
-    return this.http.get( `${this.fxqUrl}/ssymbol/${symbol}/tenor/${tenor}`);
+    return this.http.get( `${this.fxqUrl}/symbol/${symbol}/tenor/${tenor}`);
   }
 
+  newgetAll(): Observable<any> {
+    return this.http.get( `${this.fxqUrl}/slist`);
+  }
+
+  newgetById(id: number): Observable<any> {
+    return this.http.get( `${this.fxqUrl}/id/${id}`);
+  }
+
+  newfindBySymbol(symbol: string): Observable<any> {
+    return this.http.get( `${this.fxqUrl}/ssymbol/${symbol}`);
+  }
+
+  newfindBySymbolTenor(symbol: string, tenor: string): Observable<any> {
+    return this.http.get( `${this.fxqUrl}/ssymbol/${symbol}/tenor/${tenor}`);
+  }
 }

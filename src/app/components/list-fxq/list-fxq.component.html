@@ -1,46 +1,45 @@
 <body>
-    <mat-form-field>
-        <mat-label>Min. Price</mat-label>
-        <input matInput (keyup)="applyFilterMin($event)" placeholder="Up to 8 decimal places" #input1>
-      </mat-form-field>
-      
-      <mat-form-field>
-        <mat-label>Max. Price</mat-label>
-        <input matInput (keyup)="applyFilterMax($event)" placeholder="Up to 8 decimal places" #input2>
+    <mat-form-field appearance="fill">
+        <mat-label>Filter:</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Enter search keywords" #input1>
       </mat-form-field>
       
       
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort matSortActive="symbol" class="mat-elevation-z8">
       
         <ng-container matColumnDef="symbol">
-          <th mat-header-cell *matHeaderCellDef> Symbol </th>
-          <td mat-cell *matCellDef="let quote"> {{quote.symbol}} </td>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Symbol</th>
+          <td mat-cell *matCellDef="let quote"> {{quote.fxSpot.symbol}} </td>
         </ng-container>
       
         <ng-container matColumnDef="tenor">
-          <th mat-header-cell *matHeaderCellDef> Tenor </th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Tenor</th>
           <td mat-cell *matCellDef="let quote"> {{quote.tenor}} </td>
         </ng-container>
-      
-        <ng-container matColumnDef="quoteTime">
-          <th mat-header-cell *matHeaderCellDef> Time </th>
-          <td mat-cell *matCellDef="let quote"> {{quote.fxSpot.quoteTime}} </td>
-        </ng-container>
-      
+
         <ng-container matColumnDef="price">
-          <th mat-header-cell *matHeaderCellDef> Price </th>
-          <td mat-cell *matCellDef="let quote"> {{quote.price}} </td>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
+          <td mat-cell *matCellDef="let quote"> {{quote.fxSpot.price}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="quoteTime">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Time</th>
+          <td mat-cell *matCellDef="let quote"> {{quote.fxSpot.quoteTime | date}} </td>
         </ng-container>
       
+      
+        
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       
         <tr class="mat-row" *matNoDataRow>
-          <td class="mat-cell" colspan="4">No data in the price range of "{{input1.value}}" to "{{input2.value}}"</td>
+          <td class="mat-cell" colspan="4">No data including the value: "{{input1.value}}"</td>
         </tr>
+
       </table>
+      <mat-spinner [diameter]="200" *ngIf="quotes.length === 0"></mat-spinner>
 </body>
 
 <footer>
-    <mat-paginator [pageSizeOptions]="[10, 20, 50, 100]" [showFirstLastButtons]="true"></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
 </footer>

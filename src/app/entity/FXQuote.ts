@@ -5,5 +5,4 @@ export class FXQuote {
   symbol: string | undefined;
   tenor: string | undefined;
   fxSpot: FXSpot | undefined;
-
 }

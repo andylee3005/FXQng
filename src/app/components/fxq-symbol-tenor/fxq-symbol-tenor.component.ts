@@ -1,8 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { SpringfxqService } from '../../services/springfxq.service';
 import { from, Subject} from 'rxjs';
 import { FXQuote } from '../../entity/FXQuote';
-
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
 
 @Component({
   selector: 'app-fxq-symbol-tenor',
@@ -14,6 +16,10 @@ export class FxqSymbolTenorComponent implements OnInit, OnDestroy {
 
   quotes: FXQuote[] = [];
   destroy$: Subject<boolean> = new Subject<boolean>();
+  displayedColumns: string[] = ['symbol', 'tenor', 'quoteTime', 'price'];
+  dataSource = new MatTableDataSource(this.quotes);
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(private dataService: SpringfxqService) { }
   selectedSymbol: string = 'USDCAD';
@@ -23,6 +29,9 @@ export class FxqSymbolTenorComponent implements OnInit, OnDestroy {
     this.dataService.findBySymbolTenor(this.selectedSymbol, this.selectedTenor).subscribe( ( data: any[]) => {
       console.log( data);
       this.quotes = data;
+      this.dataSource = new MatTableDataSource(this.quotes);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
     })
   }
 
@@ -37,6 +46,9 @@ export class FxqSymbolTenorComponent implements OnInit, OnDestroy {
     this.dataService.findBySymbolTenor(this.selectedSymbol, this.selectedTenor).subscribe( ( data: any[]) => {
       console.log( data);
       this.quotes = data;
+      this.dataSource = new MatTableDataSource(this.quotes);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
     })
   }
 
@@ -46,6 +58,9 @@ export class FxqSymbolTenorComponent implements OnInit, OnDestroy {
     this.dataService.findBySymbolTenor(this.selectedSymbol, this.selectedTenor).subscribe( ( data: any[]) => {
       console.log( data);
       this.quotes = data;
+      this.dataSource = new MatTableDataSource(this.quotes);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
     })
   }
 }

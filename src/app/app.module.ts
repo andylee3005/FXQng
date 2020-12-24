@@ -24,6 +24,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatInputModule} from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatTableModule} from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort';
 
 
 @NgModule({
@@ -33,7 +34,7 @@ import {MatTableModule} from '@angular/material/table';
     FxqAddComponent,
     FxqSymbolsComponent,
     FxqSymbolTenorComponent,
-    FxqDetailComponent
+    FxqDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +53,7 @@ import {MatTableModule} from '@angular/material/table';
     MatInputModule,
     MatPaginatorModule,
     MatTableModule,
+    MatSortModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

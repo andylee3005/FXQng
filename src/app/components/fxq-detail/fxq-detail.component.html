@@ -1,66 +1,76 @@
-<body style="background-color:rgb(243, 240, 250);">
+<body>
+    <mat-form-field appearance="fill">
+        <mat-label>Min. Price</mat-label>
+        <input matInput (change)="minInputChangeHandler($event)" placeholder="Up to 8 decimal places" #input1>
+      </mat-form-field>
+      
+      <mat-form-field appearance="fill">
+        <mat-label>Max. Price</mat-label>
+        <input matInput (change)="maxInputChangeHandler($event)" placeholder="Up to 8 decimal places" #input2>
+      </mat-form-field>
 
-    <form class="example-form">
-        <!-- <mat-form-field appearance="fill">
-            <mat-label>Input a minimum price</mat-label>
-            <input matInput type="text" [(ngModel)]="inputs.inputMin" placeholder="Up to 8 decimal places">
-        </mat-form-field>
-        
-        <mat-form-field appearance="fill">
-            <mat-label>Input a maximum price</mat-label>
-            <input matInput type="text" [(ngModel)]="inputs.inputMax" placeholder="Up to 8 decimal places">
-        </mat-form-field> -->
+      <mat-form-field appearance="fill">
+        <mat-label>Select a symbol</mat-label>
+        <mat-select (selectionChange)="symbolChangeHandler($event)" [(value)]="inputs.selectedSymbol">
+            <mat-option value="USDCAD">USDCAD</mat-option>
+            <mat-option value="CADJPY">CADJPY</mat-option>
+            <mat-option value="EURUSD">EURUSD</mat-option>
+            <mat-option value="USDJPY">USDJPY</mat-option>
+        </mat-select>
+    </mat-form-field>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Select a symbol</mat-label>
-            <mat-select (selectionChange)="symbolChangeHandler($event)" [(value)]="inputs.selectedSymbol">
-                <mat-option value="USDCAD">USDCAD</mat-option>
-                <mat-option value="CADJPY">CADJPY</mat-option>
-                <mat-option value="EURUSD">EURUSD</mat-option>
-                <mat-option value="USDJPY">USDJPY</mat-option>
-            </mat-select>
-        </mat-form-field>
-    
-        <mat-form-field appearance="fill">
-            <mat-label>Select a tenor</mat-label>
-            <mat-select (selectionChange)="tenorChangeHandler($event)" [(value)]="inputs.selectedTenor">
-                <mat-option value="ON">ON</mat-option>
-                <mat-option value="TN">TN</mat-option>
-                <mat-option value="SN">SN</mat-option>
-                <mat-option value="TOM">TOM</mat-option>
-                <mat-option value="1W">1W</mat-option>
-                <mat-option value="2W">2W</mat-option>
-                <mat-option value="1M">1M</mat-option>
-                <mat-option value="2M">2M</mat-option>
-                <mat-option value="3M">3M</mat-option>
-                <mat-option value="6M">6M</mat-option>
-                <mat-option value="9M">9M</mat-option>
-                <mat-option value="1Y">1Y</mat-option>
-            </mat-select>
-        </mat-form-field>
-    </form>
-    <!-- <input [ngModel]="username" (ngModelChange)="username = $event">
-
-<p>Hello {{username}}!</p> -->
-
-    <div style="padding: 13px;">
-        <b> Showing {{quotes.length}} quotes with prices from </b>
-        <mat-spinner [diameter]="200" *ngIf="quotes.length === 0"></mat-spinner>
-        <div fxLayout="row wrap" fxLayoutGap="16px grid">
-            <div fxFlex="12.5%" *ngFor="let quote of quotes">
-                <mat-card style="margin-top:10px;">
-                    <mat-card-header>
-                        <mat-card-title>{{quote.symbol}}</mat-card-title>
-                        <mat-card-subtitle>Tenor: {{quote.tenor}}<br>{{quote.fxSpot.quoteTime}}
-                        </mat-card-subtitle>
-                    </mat-card-header>
-                    <mat-card-content>
-                        <p style="font-size:140%; text-align:center; margin-top: -0.5em;">
-                            ${{quote.price}}
-                        </p>
-                    </mat-card-content>
-                </mat-card>
-            </div>
-        </div>
-    </div>
+    <mat-form-field appearance="fill">
+        <mat-label>Select a tenor</mat-label>
+        <mat-select (selectionChange)="tenorChangeHandler($event)" [(value)]="inputs.selectedTenor">
+            <mat-option value="ON">ON</mat-option>
+            <mat-option value="TN">TN</mat-option>
+            <mat-option value="SN">SN</mat-option>
+            <mat-option value="TOM">TOM</mat-option>
+            <mat-option value="1W">1W</mat-option>
+            <mat-option value="2W">2W</mat-option>
+            <mat-option value="1M">1M</mat-option>
+            <mat-option value="2M">2M</mat-option>
+            <mat-option value="3M">3M</mat-option>
+            <mat-option value="6M">6M</mat-option>
+            <mat-option value="9M">9M</mat-option>
+            <mat-option value="1Y">1Y</mat-option>
+        </mat-select>
+    </mat-form-field>
+      
+      
+      <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+      
+        <ng-container matColumnDef="symbol">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Symbol </th>
+          <td mat-cell *matCellDef="let quote"> {{quote.symbol}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="tenor">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Tenor </th>
+          <td mat-cell *matCellDef="let quote"> {{quote.tenor}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="quoteTime">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Time </th>
+          <td mat-cell *matCellDef="let quote"> {{quote.fxSpot.quoteTime | date}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
+          <td mat-cell *matCellDef="let quote"> {{quote.price}} </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data in the price range of "{{input1.value}}" to "{{input2.value}}"</td>
+        </tr>
+      </table>
 </body>
+<div>
+  "{{input1.value}}" to "{{input2.value}}"
+</div>
+<footer>
+    <mat-paginator [pageSizeOptions]="[10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
+</footer>

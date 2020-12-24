@@ -1,4 +1,4 @@
-<body style="background-color:rgb(243, 240, 250);">
+<body>
     
     <mat-form-field appearance="fill">
         <mat-label>Select a symbol</mat-label>
@@ -10,25 +10,40 @@
         </mat-select>
     </mat-form-field>
     
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+      
+        <ng-container matColumnDef="symbol">
+          <th mat-header-cell *matHeaderCellDef>Symbol</th>
+          <td mat-cell *matCellDef="let quote"> {{quote.symbol}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="tenor">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Tenor</th>
+          <td mat-cell *matCellDef="let quote"> {{quote.tenor}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="quoteTime">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Time</th>
+          <td mat-cell *matCellDef="let quote"> {{quote.fxSpot.quoteTime | date}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
+          <td mat-cell *matCellDef="let quote"> {{quote.price}} </td>
+        </ng-container>
+      
+        
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data with the symbol: "{{selectedSymbol}}"</td>
+        </tr>
 
-    <div style="padding: 13px;">
-        <b> Showing {{quotes.length}} new quotes</b>
-        <mat-spinner [diameter]="200" *ngIf="quotes.length === 0"></mat-spinner>
-        <div fxLayout="row wrap" fxLayoutGap="16px grid">
-            <div fxFlex="12.5%" *ngFor="let quote of quotes">
-                <mat-card style="margin-top:10px;">
-                    <mat-card-header>
-                        <mat-card-title>{{quote.symbol}}</mat-card-title>
-                        <mat-card-subtitle>Tenor: {{quote.tenor}}<br>{{quote.fxSpot.quoteTime}}
-                        </mat-card-subtitle>
-                    </mat-card-header>
-                    <mat-card-content>
-                        <p style="font-size:140%; text-align:center; margin-top: -0.5em;">
-                            ${{quote.price}}
-                        </p>
-                    </mat-card-content>
-                </mat-card>
-            </div>
-        </div>
-    </div>
+      </table>
+      <mat-spinner [diameter]="200" *ngIf="quotes.length === 0"></mat-spinner>
 </body>
+
+<footer>
+    <mat-paginator [pageSizeOptions]="[10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
+</footer>

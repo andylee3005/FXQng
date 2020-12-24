@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+You can add global styles to this file, and also import other style files
 
 html, body {
     min-height: 100%;
@@ -17,10 +17,18 @@ table {
 }
 
 .mat-form-field {
-    margin-right: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
     margin-top: 5px;
     margin-bottom: 5px;
 }
+
+.mat-header-cell {
+    justify-content: left;
+    font-size: large;
+    font-weight: bold;
+    padding: 0px 0px 0px 4px;
+  }
 
 p {
     display: block;
@@ -30,10 +38,10 @@ p {
     margin-right: 0;
 }
 
-div {
+/* div {
     margin-left: 10px;
     margin-right: 10px;
-}
+} */
 
 footer {   
     position:fixed;
@@ -43,6 +51,7 @@ footer {
     width:100%;
     background:rgb(243, 240, 250);
  }
- .mat-paginator {
+ /* .mat-paginator {
+    margin-right: 10px;
     background:rgb(243, 240, 250);
- }
+ } */
