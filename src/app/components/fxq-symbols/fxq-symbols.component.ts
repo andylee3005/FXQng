@@ -15,7 +15,7 @@ export class FxqSymbolsComponent implements OnInit, OnDestroy {
 
   quotes: FXQuote[] = [];
   destroy$: Subject<boolean> = new Subject<boolean>();
-  displayedColumns: string[] = ['symbol', 'tenor', 'quoteTime', 'price'];
+  displayedColumns: string[] = ['symbol', 'tenor', 'price', 'quoteTime'];
   dataSource = new MatTableDataSource(this.quotes);
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;

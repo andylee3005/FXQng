@@ -23,8 +23,8 @@
         </ng-container>
 
         <ng-container matColumnDef="quoteTime">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Time</th>
-          <td mat-cell *matCellDef="let quote"> {{quote.fxSpot.quoteTime | date}} </td>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header="date">Time</th>
+          <td mat-cell *matCellDef="let quote"> {{quote.fxSpot.quoteTime | date:'medium'}} </td>
         </ng-container>
       
       

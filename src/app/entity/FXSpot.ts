@@ -1,6 +1,6 @@
 export class FXSpot {
   symbol: string | undefined;
   tenor: string | undefined;
-  quoteTime: any | undefined;
+  quoteTime: string | undefined;
   price: string | undefined;
 }
