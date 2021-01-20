@@ -5,6 +5,7 @@ import { FXQuote } from '../../entity/FXQuote';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-fxq-symbols',
@@ -20,10 +21,11 @@ export class FxqSymbolsComponent implements OnInit, OnDestroy {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private dataService: SpringfxqService) { }
+  constructor(private dataService: SpringfxqService, private token: TokenStorageService) { }
   selectedSymbol: string = 'USDCAD';
 
   ngOnInit() {
+    
     this.dataService.findBySymbol(this.selectedSymbol).subscribe( ( data: any[]) => {
       console.log( data);
       this.quotes = data;

@@ -6,6 +6,10 @@ import { FxqSymbolTenorComponent } from './components/fxq-symbol-tenor/fxq-symbo
 import { FxqSymbolsComponent } from './components/fxq-symbols/fxq-symbols.component';
 import { ListFxqComponent } from './components/list-fxq/list-fxq.component';
 
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { ProfileComponent } from './components/profile/profile.component';
+
 
 
 const routes: Routes = [
@@ -15,6 +19,9 @@ const routes: Routes = [
   { path: 'symbol-tenor', component: FxqSymbolTenorComponent},
   { path: 'symbols', component: FxqSymbolsComponent},
   { path: 'list', component: ListFxqComponent},
+  { path: 'register', component: RegisterComponent},
+  { path: 'login', component: LoginComponent},
+  { path: 'profile', component: ProfileComponent},
 ];
 
 @NgModule({

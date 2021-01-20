@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { SpringfxqService } from '../../services/springfxq.service';
-import { from, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { FXQuote } from '../../entity/FXQuote';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-fxq-detail',
@@ -49,6 +49,12 @@ export class FxqDetailComponent implements OnInit, OnDestroy {
     if (this.inputs.selectedSymbol == "ALL") {
       this.ngOnInit();
       this.inputs.selectedTenor = "ALL";
+    } else if (this.inputs.selectedTenor == "ALL") {
+      this.dataService.findBySymbol(this.inputs.selectedSymbol).subscribe((data: any[]) => {
+        console.log(data);
+        this.quotes = data;
+        this.generateTable();
+      })
     } else {
       this.dataService.findBySymbolTenor(this.inputs.selectedSymbol, this.inputs.selectedTenor).subscribe((data: any[]) => {
         console.log(data);
@@ -100,6 +106,10 @@ export class FxqDetailComponent implements OnInit, OnDestroy {
     this.inputs.inputMax = filterValue;
     this.generateTable();
     if (filterValue == '') this.ngOnInit();
+  }
+
+  resetClick() {
+    window.location.reload();
   }
 
   generateTable() {
