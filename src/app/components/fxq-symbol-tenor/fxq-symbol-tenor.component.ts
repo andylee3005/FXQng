@@ -43,25 +43,47 @@ export class FxqSymbolTenorComponent implements OnInit, OnDestroy {
   symbolChangeHandler (event: any) {
     //update the ui
     this.selectedSymbol = event.value;
-    this.dataService.findBySymbolTenor(this.selectedSymbol, this.selectedTenor).subscribe( ( data: any[]) => {
-      console.log( data);
-      this.quotes = data;
-      this.dataSource = new MatTableDataSource(this.quotes);
-      this.dataSource.sort = this.sort;
-      this.dataSource.paginator = this.paginator;
-    })
+    if (this.selectedTenor == 'ALL') {
+      this.dataService.findBySymbol(this.selectedSymbol).subscribe( ( data: any[]) => {
+        console.log( data);
+        this.quotes = data;
+        this.dataSource = new MatTableDataSource(this.quotes);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+      })
+    } else {
+      this.dataService.findBySymbolTenor(this.selectedSymbol, this.selectedTenor).subscribe( ( data: any[]) => {
+        console.log( data);
+        this.quotes = data;
+        this.dataSource = new MatTableDataSource(this.quotes);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+      })
+    }
+    
   }
 
   tenorChangeHandler (event: any) {
     //update the ui
     this.selectedTenor = event.value;
-    this.dataService.findBySymbolTenor(this.selectedSymbol, this.selectedTenor).subscribe( ( data: any[]) => {
-      console.log( data);
-      this.quotes = data;
-      this.dataSource = new MatTableDataSource(this.quotes);
-      this.dataSource.sort = this.sort;
-      this.dataSource.paginator = this.paginator;
-    })
+    if (this.selectedTenor == 'ALL') {
+      this.dataService.findBySymbol(this.selectedSymbol).subscribe( ( data: any[]) => {
+        console.log( data);
+        this.quotes = data;
+        this.dataSource = new MatTableDataSource(this.quotes);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+      })
+  
+    } else {
+      this.dataService.findBySymbolTenor(this.selectedSymbol, this.selectedTenor).subscribe( ( data: any[]) => {
+        console.log( data);
+        this.quotes = data;
+        this.dataSource = new MatTableDataSource(this.quotes);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+      })  
+    }
   }
 }
 

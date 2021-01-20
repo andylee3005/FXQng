@@ -4,12 +4,29 @@
   </h1>
   
   <button mat-button routerLink="/">List</button>
-  <button mat-button routerLink="/detail">Detail</button>
-  <button mat-button routerLink="/symbols">Symbols</button>
-  <button mat-button routerLink="/symbol-tenor">Symbol-Tenor</button>
-  <button mat-button routerLink="/add">Add</button>
+  <button *ngIf="showModeratorBoard || showAdminBoard" mat-button routerLink="/detail">Detail</button>
+  <button *ngIf="isLoggedIn" mat-button routerLink="/symbols">Symbols</button>
+  <button *ngIf="isLoggedIn" mat-button routerLink="/symbol-tenor">Symbol-Tenor</button>
+  <button *ngIf="showAdminBoard" mat-button routerLink="/add">Add</button>
 
   
+  <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+    <li class="nav-item">
+      <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
+    </li>
+    <li class="nav-item">
+      <a href="/login" class="nav-link" routerLink="login">Login</a>
+    </li>
+  </ul>
+
+  <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+    <li class="nav-item">
+      <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
+    </li>
+    <li class="nav-item">
+      <a href class="nav-link" (click)="logout()">Logout</a>
+    </li>
+  </ul>
 
 </mat-toolbar>
 

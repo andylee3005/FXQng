@@ -23,7 +23,7 @@
     <mat-form-field appearance="fill">
         <mat-label>Select a tenor</mat-label>
         <mat-select (selectionChange)="tenorChangeHandler($event)" [(value)]="inputs.selectedTenor">
-            <mat-option value="ALL">ALL</mat-option>  
+             <mat-option value="ALL">ALL</mat-option>  
             <mat-option value="ON">ON</mat-option>
             <mat-option value="TN">TN</mat-option>
             <mat-option value="SN">SN</mat-option>
@@ -39,7 +39,7 @@
         </mat-select>
     </mat-form-field>
 
-    <button mat-raised-button (change)="ngOnInit()">Reset</button>
+    <button mat-raised-button (click)="resetClick()">Reset</button>
     
       
       <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">

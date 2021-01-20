@@ -14,12 +14,16 @@ export class FxqAddComponent implements OnInit, OnDestroy {
   destroy$: Subject<boolean> = new Subject<boolean>();
 
   constructor(private dataService: SpringfxqService) { }
+  content: string;
 
   ngOnInit() {
-    this.dataService.getAll().subscribe( ( data: any[]) => {
-      console.log( data);
-      this.quotes = data;
-    })
+    this.dataService.test('mod').subscribe(
+      data => {
+        this.content = data;
+      }, err => {
+        this.content = JSON.parse(err.error).message;
+      }
+    );
   }
 
   ngOnDestroy() {
