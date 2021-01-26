@@ -30,6 +30,9 @@ import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
 
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
+import { UserListComponent } from './components/user-list/user-list.component';
+import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { ProfileEditComponent } from './components/profile-edit/profile-edit.component';
 
 
 @NgModule({
@@ -43,6 +46,9 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
+    UserListComponent,
+    UserDetailsComponent,
+    ProfileEditComponent,
   ],
   imports: [
     BrowserModule,

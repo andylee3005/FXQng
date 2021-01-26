@@ -8,6 +8,8 @@
   <button *ngIf="isLoggedIn" mat-button routerLink="/symbols">Symbols</button>
   <button *ngIf="isLoggedIn" mat-button routerLink="/symbol-tenor">Symbol-Tenor</button>
   <button *ngIf="showAdminBoard" mat-button routerLink="/add">Add</button>
+  <button *ngIf="showModeratorBoard || showAdminBoard" mat-button routerLink="/users">Users</button>
+  
 
   
   <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">

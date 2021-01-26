@@ -1,0 +1,61 @@
+<div class="list row">
+    <div class="col-md-6">
+      <h3><strong>Users List</strong></h3>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let user of users; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveUser(user, i)"
+        >
+          {{ user.username }}
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-md-6">
+      <div *ngIf="currentUser">
+        <h3><strong>User</strong></h3>
+        <div>
+          <label><strong>Username:</strong></label> {{ currentUser.username }}
+        </div>
+        <div>
+          <label><strong>Email:</strong></label>
+          {{ currentUser.email }}
+        </div>
+        <div>
+          <label><strong>First name:</strong></label>
+          {{ currentUser.first }}
+        </div>        
+        <div>
+          <label><strong>Last name:</strong></label>
+          {{ currentUser.last }}
+        </div>
+        <div>
+          <label><strong>Address:</strong></label>
+          {{ currentUser.address }}
+        </div>
+        <div>
+          <label><strong>Phone:</strong></label>
+          {{ currentUser.phone }}
+        </div>
+        <div>
+          <label><strong>Roles:</strong></label>
+          <ul>
+            <li *ngFor="let role of currentUser.roles">
+              {{ role.name | json }}
+            </li>
+          </ul>  
+        </div>
+  
+        <a class="badge badge-warning" routerLink="/users/edit/{{ currentUser.id }}">
+          Edit
+        </a>
+      </div>
+  
+      <div *ngIf="!currentUser">
+        <br />
+        <p>Please click on a User...</p>
+      </div>
+    </div>
+  </div>
