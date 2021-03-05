@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../services/user.service';
+import { ClientService } from '../../services/client.service';
 import { TokenStorageService } from '../../services/token-storage.service';
 
 
 @Component({
-  selector: 'app-user-list',
-  templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.css']
+  selector: 'app-client-list',
+  templateUrl: './client-list.component.html',
+  styleUrls: ['./client-list.component.css']
 })
-export class UserListComponent implements OnInit {
+export class ClientListComponent implements OnInit {
 
   private roles: string[];
   isLoggedIn = false;
@@ -16,14 +16,14 @@ export class UserListComponent implements OnInit {
   showModeratorBoard = false;
   username: string;
 
-  users: any;
-  currentUser = null;
+  clients: any;
+  currentClient = null;
   currentIndex = -1;
 
-  constructor(private userService: UserService, private tokenStorageServices: TokenStorageService) { }
+  constructor(private clientService: ClientService, private tokenStorageServices: TokenStorageService) { }
 
   ngOnInit(): void {
-    this.getUsers();
+    this.getClients();
 
     this.isLoggedIn = !!this.tokenStorageServices.getToken();
 
@@ -38,10 +38,10 @@ export class UserListComponent implements OnInit {
     }
   }
 
-  getUsers(): void {
-    this.userService.getAll().subscribe( 
+  getClients(): void {
+    this.clientService.getAll().subscribe( 
       data => {
-        this.users = data;
+        this.clients = data;
         console.log(data);
       }, error => {
         console.log(error);
@@ -49,18 +49,18 @@ export class UserListComponent implements OnInit {
   }
 
   refreshList(): void {
-    this.getUsers();
-    this.currentUser = null;
+    this.getClients();
+    this.currentClient = null;
     this.currentIndex = -1;
   }
 
-  setActiveUser(user, index): void {
-    this.currentUser = user;
+  setActiveClient(client, index): void {
+    this.currentClient = client;
     this.currentIndex = index;
   }
 
-  deleteUser(user, index): void {
-    this.userService.delete(this.currentUser.id).subscribe(
+  deleteClient(client, index): void {
+    this.clientService.delete(this.currentClient.id).subscribe(
       response => {
         console.log(response);
         this.refreshList();
@@ -68,5 +68,5 @@ export class UserListComponent implements OnInit {
         console.log(error);
       });
   }
-  
+
 }

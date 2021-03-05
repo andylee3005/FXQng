@@ -12,7 +12,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { ProfileEditComponent } from './components/profile-edit/profile-edit.component';
-
+import { ClientListComponent } from './components/client-list/client-list.component'
+import { ClientEditComponent } from './components/client-edit/client-edit.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,8 @@ const routes: Routes = [
   { path: 'profile/edit/:id', component: ProfileEditComponent},
   { path: 'users', component: UserListComponent},
   { path: 'users/edit/:id', component: UserDetailsComponent},
+  { path: 'clients/list', component: ClientListComponent},
+  { path: 'clients/edit/:id', component: ClientEditComponent},
 ];
 
 @NgModule({

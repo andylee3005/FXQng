@@ -1,5 +1,5 @@
-<div class="list row">
-    <div class="col-md-6">
+<div *ngIf="showModeratorBoard || showAdminBoard" class="list row">
+    <div class="column left">
       <h3><strong>Users List</strong></h3>
       <ul class="list-group">
         <li
@@ -13,9 +13,9 @@
       </ul>
     </div>
 
-    <div class="col-md-6">
+    <div class="column right">
       <div *ngIf="currentUser">
-        <h3><strong>User</strong></h3>
+        <h3><strong>User Details</strong></h3>
         <div>
           <label><strong>Username:</strong></label> {{ currentUser.username }}
         </div>
@@ -48,9 +48,12 @@
           </ul>  
         </div>
   
-        <a class="badge badge-warning" routerLink="/users/edit/{{ currentUser.id }}">
+        <button *ngIf="showModeratorBoard || showAdminBoard" class="badge badge-warning" routerLink="/users/edit/{{ currentUser.id }}">
           Edit
-        </a>
+        </button>
+        <button *ngIf="showModeratorBoard || showAdminBoard" class="badge badge-danger" (click)="deleteUser()">
+            Delete
+        </button>
       </div>
   
       <div *ngIf="!currentUser">
@@ -58,4 +61,8 @@
         <p>Please click on a User...</p>
       </div>
     </div>
+  </div>
+
+  <div *ngIf="!(showModeratorBoard || showAdminBoard)">
+      <h1>Unauthorized!</h1>
   </div>

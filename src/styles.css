@@ -21,10 +21,6 @@ h3 {
     background-color:#ffffe6 ;
 }
 
-mat-card {
-    width: 125px;
-}
-
 table {
     width: 100%;
     margin-bottom: 65px;
@@ -85,3 +81,8 @@ footer {
     margin-right: 10px;
     background:rgb(243, 240, 250);
  } */
+
+ button {
+     margin-right: 5px;
+     margin-bottom: 5px;
+ }

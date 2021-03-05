@@ -33,6 +33,8 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { ProfileEditComponent } from './components/profile-edit/profile-edit.component';
+import { ClientListComponent } from './components/client-list/client-list.component';
+import { ClientEditComponent } from './components/client-edit/client-edit.component';
 
 
 @NgModule({
@@ -49,6 +51,8 @@ import { ProfileEditComponent } from './components/profile-edit/profile-edit.com
     UserListComponent,
     UserDetailsComponent,
     ProfileEditComponent,
+    ClientListComponent,
+    ClientEditComponent,
   ],
   imports: [
     BrowserModule,

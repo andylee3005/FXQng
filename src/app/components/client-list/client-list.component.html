@@ -1,0 +1,71 @@
+<!-- <div class="row">
+    <div class="column left" style="background-color:rgb(216, 64, 64);">
+      <h2>Column 1</h2>
+      <p>Some text..</p>
+    </div>
+    <div class="column right" style="background-color:rgb(94, 197, 120);">
+      <h2>Column 2</h2>
+      <p>Some text..</p>
+    </div>
+  </div> -->
+
+<div *ngIf="isLoggedIn" class="list row">
+    <div class="column left">
+      <h3><strong>Client List</strong></h3>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let client of clients; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveClient(client, i)"
+        >
+          {{ client.fn }} {{ client.ln }}
+        </li>
+      </ul>
+    </div>
+
+    <div class="column right">
+      <div *ngIf="currentClient">
+        <h3><strong>Client Details</strong></h3>
+        <div>
+            <label><strong>Email:</strong></label>
+            {{ currentClient.email }}
+          </div>
+          <div>
+            <label><strong>Phone:</strong></label>
+            {{ currentClient.phone }}
+          </div>
+          <div>
+            <label><strong>Address:</strong></label>
+            {{ currentClient.address }}
+          </div><div>
+            <label><strong>Postal Code:</strong></label>
+            {{ currentClient.post }}
+          </div>
+          <div>
+            <label><strong>Created:</strong></label>
+            {{ currentClient.created }}
+          </div>
+          <div>
+            <label><strong>Updated:</strong></label>
+            {{ currentClient.updated }}
+          </div>
+  
+        <button *ngIf="showModeratorBoard || showAdminBoard" class="badge badge-warning" routerLink="/clients/edit/{{ currentClient.id }}">
+            Edit
+        </button>
+        <button *ngIf="showAdminBoard" class="badge badge-danger" (click)="deleteClient()">
+            Delete
+        </button>
+      </div>
+  
+      <div *ngIf="!currentClient">
+        <br />
+        <p>Please click on a client...</p>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!isLoggedIn">
+      <h1>Unauthorized!</h1>
+  </div>
