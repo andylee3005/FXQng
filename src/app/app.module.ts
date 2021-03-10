@@ -35,6 +35,9 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
 import { ProfileEditComponent } from './components/profile-edit/profile-edit.component';
 import { ClientListComponent } from './components/client-list/client-list.component';
 import { ClientEditComponent } from './components/client-edit/client-edit.component';
+import { PortfolioListComponent } from './components/portfolio-list/portfolio-list.component';
+import { PortfolioEditComponent } from './components/portfolio-edit/portfolio-edit.component';
+import { StockSpotComponent } from './components/stock-spot/stock-spot.component';
 
 
 @NgModule({
@@ -53,6 +56,9 @@ import { ClientEditComponent } from './components/client-edit/client-edit.compon
     ProfileEditComponent,
     ClientListComponent,
     ClientEditComponent,
+    PortfolioListComponent,
+    PortfolioEditComponent,
+    StockSpotComponent,
   ],
   imports: [
     BrowserModule,

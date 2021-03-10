@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { UrlsService } from './urls.service';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class ClientService {
+export class ClientService extends UrlsService {
 
-  constructor(private http: HttpClient) { }
-
-  CLIENTURL = "http://localhost:4983/CLIENT";
+  constructor(private http: HttpClient) {
+    super();
+  }
+  CLIENTURL = this.baseURL + "CLIENT";
 
   getAll(): Observable<any> {
     return this.http.get(this.CLIENTURL + '/list');

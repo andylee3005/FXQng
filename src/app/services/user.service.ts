@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { extend } from 'webdriver-js-extender';
 import { UrlsService } from './urls.service';
 
 //const USERURL = 'http://192.168.0.14:4983/USER';

@@ -1,4 +1,34 @@
-You can add global styles to this file, and also import other style files
+.mat-form-field {
+    margin-left: 5%;
+    margin-top: -1%;
+    margin-bottom: -3%;
+}
+
+table {
+    margin-bottom: 0px;
+}
+
+.mat-header-cell {
+    justify-content: left;
+    font-size: medium;
+    padding: 0px 0px 0px 0px;
+}
+
+label {
+    font-size: x-large;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+.row {
+    display: flex;
+    /* padding-inline: 2%; */
+}
+
+.column {
+    box-sizing: content-box;
+    width: 50%;
+}
 
 html, body {
     min-height: 100%;
@@ -12,39 +42,33 @@ h3 {
     padding-left: 10px;
     font-weight: bold;
 }
-
+/* 
 .edit-form {
-    margin-top: 10px;
-    padding-inline: 15px;
+    margin-top: 0px;
+    margin-inline: 20px;
+    padding-inline: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
     background-color:#ffffe6 ;
+} */
+.spot-form {
+    width: auto;
+    margin-inline: 5%;
+    padding: 10px;
+    position: fixed;
+    top: 65px;
+    background-color: rgb(183, 255, 187)
 }
 
-table {
-    width: 100%;
-    margin-bottom: 65px;
+.stock-form {
+    width: auto;
+    margin-inline: 5%;
+    padding: 10px;
+    position: fixed;
+    bottom: 65px;
+    background-color: rgb(236, 159, 159)
 }
 
-.mat-form-field {
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-.mat-header-cell {
-    justify-content: left;
-    font-size: large;
-    font-weight: bold;
-    padding: 0px 0px 0px 4px;
-  }
-
-.mat-spinner {
-    align-content: center;
-    margin-left: auto;
-    margin-right: auto;
-}
 
 p {
     display: block;
@@ -69,20 +93,20 @@ ul li a {
     margin-right: 10px;
 } */
 
-footer {   
+/* footer {   
     position:fixed;
     left:0px;
     bottom:0px;
     height:50px;
     width:100%;
     background:rgb(243, 240, 250);
- }
+ } */
  /* .mat-paginator {
     margin-right: 10px;
     background:rgb(243, 240, 250);
  } */
 
- /* button {
+ button {
      margin-right: 5px;
      margin-bottom: 5px;
- } */
+ }

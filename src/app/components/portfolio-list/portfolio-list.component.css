@@ -1,0 +1,49 @@
+.left {
+  width: 25%;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+}
+
+.right {
+  width: 25%;
+}
+
+.mat-form-field {
+  width: 34%;
+  height: 10%;
+}
+
+column {
+  margin-top: 10px;
+  padding-top: 10px;
+}
+.edit-form {
+  margin-top: 10px;
+  padding-inline: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #f19ddf;
+}
+
+.stocks {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.stocks td {
+  border: 1px solid #ddd;
+  padding: 2px;
+}
+
+.stocks tr:nth-child(even){background-color: #f2f2f2;}
+
+.stocks tr:hover {background-color: #ddd;}
+
+.stocks th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #4CAF50;
+  color: white;
+}

@@ -59,7 +59,7 @@ export class UserListComponent implements OnInit {
     this.currentIndex = index;
   }
 
-  deleteUser(user, index): void {
+  deleteUser(user): void {
     this.userService.delete(this.currentUser.id).subscribe(
       response => {
         console.log(response);

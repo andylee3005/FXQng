@@ -1,0 +1,87 @@
+<div *ngIf="isLoggedIn" class="list row">
+  <div class="column left">
+    <h3><strong>Portfolio List</strong></h3>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let portfolio of portfolios; let i = index" [class.active]="i == currentIndex"
+        (click)="setActivePortfolio(portfolio, i)">
+        {{ portfolio.pName }} | {{ portfolio.currency }}
+      </li>
+      <div *ngIf="portfolios.length==0">
+        <br />
+        <p>No portfolios found.</p>
+      </div>
+
+    </ul>
+    <div>
+      <mat-form-field appearance="standard">
+        <mat-label>Portfolio name</mat-label>
+        <input matInput [(ngModel)]="newPName" />
+      </mat-form-field>
+
+      <mat-form-field appearance="standard">
+        <mat-label>Select a currency</mat-label>
+        <mat-select [(value)]="newCurrency">
+          <mat-option value="USD">USD</mat-option>
+          <mat-option value="CAD">CAD</mat-option>
+          <mat-option value="EUR">EUR</mat-option>
+          <mat-option value="JPY">JPY</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-raised-button (click)="createPortfolioClick()">Create</button>
+    </div>
+
+  </div>
+
+  <div class="column right">
+    <div *ngIf="currentPortfolio">
+      <h3><strong>Portfolio Details</strong></h3>
+      <div>
+        <label><strong>Last modified:</strong></label>
+        {{ currentPortfolio.updated }}
+      </div>
+      <div>
+        <label><strong>Currency:</strong></label>
+        {{ currentPortfolio.currency }}
+      </div>
+      <div>
+        <label><strong>Stocks:</strong></label>
+        <table *ngIf="currentPortfolio.stocks.length!=0" class="stocks">
+
+          <tr>
+            <th>Symbol</th>
+            <th>Currency</th>
+            <th>Price</th>
+            <th>Volume</th>
+            <th>Time bought</th>
+          </tr>
+          <tr *ngFor="let stock of currentPortfolio.stocks">
+            <td>{{ stock.symbol }}</td>
+            <td>{{ stock.currency }}</td>
+            <td>{{ stock.price }}</td>
+            <td>{{ stock.volume }}</td>
+            <td>{{ stock.timePurchased }}</td>
+
+          </tr>
+
+        </table>
+        <p *ngIf="currentPortfolio.stocks.length==0">No stocks found.</p>
+        <button class="badge badge-warning" routerLink="/portfolio/edit/{{ currentPortfolio.id }}">
+          Manage
+        </button>
+        <button class="badge badge-danger" (click)="deletePortfolio()">
+          Delete
+        </button>
+      </div>
+
+    </div>
+
+    <div *ngIf="!currentPortfolio">
+      <br />
+      <p>Please click on a Portfolio...</p>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!isLoggedIn">
+  <h1>Unauthorized!</h1>
+</div>
