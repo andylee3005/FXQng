@@ -38,6 +38,7 @@ import { ClientEditComponent } from './components/client-edit/client-edit.compon
 import { PortfolioListComponent } from './components/portfolio-list/portfolio-list.component';
 import { PortfolioEditComponent } from './components/portfolio-edit/portfolio-edit.component';
 import { StockSpotComponent } from './components/stock-spot/stock-spot.component';
+import { ReactivefxqComponent } from './components/reactivefxq/reactivefxq.component';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import { StockSpotComponent } from './components/stock-spot/stock-spot.component
     PortfolioListComponent,
     PortfolioEditComponent,
     StockSpotComponent,
+    ReactivefxqComponent,
   ],
   imports: [
     BrowserModule,

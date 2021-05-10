@@ -7,5 +7,5 @@ export class UrlsService {
 
   constructor() { }
 
-  baseURL = "http://192.168.0.19:4983/";
+  baseURL = "http://192.168.0.182:4983/";
 }

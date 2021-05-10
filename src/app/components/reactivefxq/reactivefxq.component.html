@@ -1,0 +1,95 @@
+<div class="row">
+  <!-- <mat-form-field appearance="fill">
+        <mat-label>Select a symbol</mat-label>
+        <mat-select [(ngModel)]="this.selectedSymbol">
+            <mat-option value="USDCAD">USDCAD</mat-option>
+            <mat-option value="CADJPY">CADJPY</mat-option>
+            <mat-option value="EURUSD">EURUSD</mat-option>
+            <mat-option value="USDJPY">USDJPY</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <p>{{this.selectedSymbol}}</p> -->
+  <!-- <mat-form-field appearance="fill">
+        <mat-label>Select a tenor</mat-label>
+        <mat-select [(ngModel)]="this.selectedTenor">
+            <mat-option value="ON">ON</mat-option>
+            <mat-option value="TN">TN</mat-option>
+            <mat-option value="SN">SN</mat-option>
+            <mat-option value="TOM">TOM</mat-option>
+            <mat-option value="1W">1W</mat-option>
+            <mat-option value="2W">2W</mat-option>
+            <mat-option value="1M">1M</mat-option>
+            <mat-option value="2M">2M</mat-option>
+            <mat-option value="3M">3M</mat-option>
+            <mat-option value="6M">6M</mat-option>
+            <mat-option value="9M">9M</mat-option>
+            <mat-option value="1Y">1Y</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <p>{{this.selectedTenor}}</p> -->
+
+  <div class="col-md-8">
+    <p>
+      <!-- <label>Pagination:
+          <input type="checkbox" [checked]="pagination" (change)="pagination = !pagination" >
+          <label>Page #:
+            <input type="text" [(ngModel)]="page" size="2">
+          </label>
+          <label>Page Size:
+            <input type="text" [(ngModel)]="size" size="2">
+          </label>
+        </label> -->
+      <!-- <button mat-stroked-button (click)="requestQuoteStream()">Reactive Request</button>
+      <button mat-stroked-button (click)="resetData()">Reset</button>
+      <button mat-stroked-button (click)="getAllData()">Test</button>
+      <button mat-stroked-button (click)="setData()">Set</button> -->
+
+    </p>
+    <!-- <table class="table">
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Tenor</th>
+          <th>Price</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let quote of quotes" (click)="onSelect(quote)">
+          <td>{{quote.symbol}}</td>
+          <td>{{quote.tenor}}</td>
+          <td>{{quote.pxStr}}</td>
+          <td>{{quote.createdTime | date:'medium'}}</td>
+        <tr>
+      </tbody>
+    </table> -->
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Tenor</th>
+          <th>Price</th>
+          <th>Fluctuation</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <ng-container *ngFor="let sym of symbolsArr; index as s">
+        <ng-container *ngFor="let ten of tenorsArr; index as t">
+          <tr>
+            <td>{{sym}}</td>
+            <td>{{ten}}</td>
+            <td [ngStyle]="{'background-color': allData[s][t][0]?.price>=allData[s][t][1]?.price ? 'green' : 'red'}">{{allData[s][t][0]?.pxStr}}</td>
+            <td>{{allData[s][t][0]?.pxStr - allData[s][t][1]?.pxStr  | number:'0.1-8'}}</td>
+            
+            <td>{{allData[s][t][0]?.createdTime | date:'medium'}}</td>
+            </tr>
+            
+          </ng-container>
+        </ng-container>
+    </table>
+  </div>
+  <!-- <div class="col-md-4">
+      <div class="message">Click on a quote for more details</div>
+      <app-quote-detail [quote]="selectedQuote"></app-quote-detail>
+    </div> -->
+</div>

@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { SpringfxqService } from '../../services/springfxq.service';
+// import { ReactivefxqService } from '../../services/reactivefxq.service';
 import { from, Subject } from 'rxjs';
 import { FXQuote } from '../../entity/FXQuote';
 import { MatTableDataSource } from '@angular/material/table';

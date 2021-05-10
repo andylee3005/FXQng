@@ -17,9 +17,10 @@ import { ClientEditComponent } from './components/client-edit/client-edit.compon
 import { PortfolioListComponent } from './components/portfolio-list/portfolio-list.component';
 import { PortfolioEditComponent } from './components/portfolio-edit/portfolio-edit.component';
 import { StockSpotComponent } from './components/stock-spot/stock-spot.component';
+import { ReactivefxqComponent } from './components/reactivefxq/reactivefxq.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'list', pathMatch: 'full'},
+  { path: '', redirectTo: 'reactive', pathMatch: 'full'},
   { path: 'add', component: FxqAddComponent},
   { path: 'detail', component: FxqDetailComponent},
   { path: 'symbol-tenor', component: FxqSymbolTenorComponent},
@@ -36,6 +37,7 @@ const routes: Routes = [
   { path: 'portfolio', component: PortfolioListComponent},
   { path: 'portfolio/edit/:id', component: PortfolioEditComponent},
   { path: 'stockspot', component: StockSpotComponent},
+  { path: 'reactive', component: ReactivefxqComponent},
   
 ];
 
